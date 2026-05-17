@@ -64,7 +64,6 @@ async def create_account(creds: CreateUser, session: SessionDep, request: Reques
         first_name = creds.first_name,
         username = creds.username,
         create_at = datetime.now(timezone.utc),
-        emoji_avatar = creds.emoji_avatar,
         hash_password = password,
         salt = salt
     )
@@ -79,13 +78,11 @@ async def create_account(creds: CreateUser, session: SessionDep, request: Reques
         account_first_name = new_user.first_name
         account_create_at = new_user.create_at
         account_username = new_user.username
-        account_emoji_avatar = new_user.emoji_avatar
 
         return {
             'account_ID': account_id,
             'account_first_name': account_first_name,
             'account_username': account_username,
-            'account_emoji_avatar': account_emoji_avatar,
             'account_create_at': account_create_at,
             'access_token': access_token,
         }
